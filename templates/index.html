@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analizador Léxico, Sintáctico</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Analizador Léxico, Sintáctico</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="textarea-container">
+                <textarea name="code" rows="10" cols="50" placeholder="Introduce el código aquí...">{{ code if code else '' }}</textarea>
+            </div>
+            <div class="file-upload">
+                <input type="file" name="file">
+            </div>
+            <button type="submit">Ejecutar</button>
+        </form>
+        {% if lexical_analysis and syntactic_analysis %}
+            <div class="analysis-container">
+                <h2>Texto</h2>
+                <pre>{{ code }}</pre>
+                <h2>Análisis Léxico</h2>
+                <pre>{{ lexical_analysis }}</pre>
+                <h2>Análisis Sintáctico</h2>
+                <pre>{{ syntactic_analysis }}</pre>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
